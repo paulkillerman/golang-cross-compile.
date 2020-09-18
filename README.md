@@ -15,10 +15,9 @@ for /f %%i in ('findstr /i . hyper-v.txt 2^>nul') do dism /online /norestart /ad
 del hyper-v.txt
 Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL
 
-
 // save it in file as  win10_amd64_install_hyper-v.cmd
-------------
-3\ run as administrator
+
+3\ run win10_amd64_install_hyper-v.cmd as administrator
 ------------
 4\ install wsl ubuntu
 ------------
