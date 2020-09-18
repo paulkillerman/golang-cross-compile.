@@ -6,6 +6,7 @@ windows 10 home install docker
 1\ https://docs.docker.com/docker-for-windows/install/   install it.
 ------------
 2\setting hyPer-V 
+------------
 //copy following 
 
 pushd "%~dp0"
@@ -22,6 +23,7 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 4\ install wsl ubuntu
 ------------
 5\ vim ~/.bashrc
+------------
     export DOCKER_HOST=tcp://127.0.0.1:2375
     source  ~/.bashrc
    
@@ -33,7 +35,7 @@ and then run power shell with administrator.
 
 cd "C:\Program Files\Docker\Docker"
 ./DockerCli.exe -SwitchDaemon
-------------
+
 6\ docker pull karalabe/xgo-latest
 ------------
 7\ docker run --rm -v D:/source/proX:/build -v D:/source/src/:/go/src -it karalabe/xgo-latest /bin/bash
@@ -41,11 +43,12 @@ cd "C:\Program Files\Docker\Docker"
 8\ docker exec -it "container id" /bin/bash
 ------------
 9\ 
+--------
 CC=o64-clang CXX=o64-clang++ GOOS=darwin GOARCH=amd64 CGO_ENABLED=1 go build -o bin/game_darwin  -trimpath -ldflags "-s -w" src/proX/cmd/game/main.go
 CC=x86_64-w64-mingw32-gcc-posix CXX=x86_64-w64-mingw32-g++-posix GOOS=windows GOARCH=amd64 CGO_ENABLED=1 go build -o bin/game_win -trimpath -ldflags "-s -w" src/proX/cmd/game/main.go
 CC=x86_64-linux-musl-gcc GOOS=linux GOARCH=amd64 CGO_ENABLED=1 go build -o bin/game_linux -trimpath -ldflags "-s -w" src/proX/cmd/game/main.go 
 
 // you should download x86_64-linux-musl-cross.tgz and   export PATH=$PATH:$(pwd)/x86_64-linux-musl-cross/bin   //in docker
 
-------------
 10\ finaly docker container stop "container id"
+------------
